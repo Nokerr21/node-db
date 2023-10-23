@@ -1,29 +1,35 @@
 const NFC = require('../../database/models/nfc')
 
 class NfcActions {
-    saveNFC(req, resp){
 
-       // const newNFC = new NFC({
-         //   info: 'Test 2',
-          //  index: 'TestIndex2',
-          //  batchNumber: 'TestBatch2'
-         // });
-          
-       // newNFC.save().then(() => {
-        //    console.log('testowe NFC zapisane!');
-        //});
-       
+    // save NFC info POST
+    async saveNFC(req, resp){
         const info = req.body.info;
         const index = req.body.index;
         const batchNumber = req.body.batchNumber;
 
+        let nfc;
 
-        resp.send('NFC saved! ' + 'info: ' + info + ' index: ' + index  + ' batchNumber: ' + batchNumber);
+        try {
+            nfc = new NFC({
+                info: info,
+                index: index,
+                batchNumber: batchNumber
+            });
+    
+            await nfc.save();
+        } catch (error) {
+            return resp.status(422).json({message: error.message})
+        }
+
+        resp.status(201).json(nfc);
     }
 
-    getNFC(req, resp){
+    // read one NFC info GET
+    async getNFC(req, resp){
         const id = req.params.id;
-        resp.send('NFC GET: ' + id);
+        const nfc = await NFC.findOne({ _id: id });
+        resp.json(nfc);
     }
 }
 
