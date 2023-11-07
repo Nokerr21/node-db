@@ -31,6 +31,13 @@ class NfcActions {
         const nfc = await NFC.findOne({ _id: id });
         resp.json(nfc);
     }
+
+    // delete one NFC DELETE
+    async deleteNFC(req, resp){
+        const id = req.params.id;
+        await NFC.deleteOne({ _id: id });
+        resp.status(204);
+    }
 }
 
 module.exports = new NfcActions();
