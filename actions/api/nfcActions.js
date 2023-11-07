@@ -36,7 +36,7 @@ class NfcActions {
     async deleteNFC(req, resp){
         const id = req.params.id;
         await NFC.deleteOne({ _id: id });
-        resp.status(204);
+        resp.sendStatus(204);
     }
 }
 
