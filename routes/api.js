@@ -14,9 +14,5 @@ router.get('/nfcs/:id', nfcActions.getNFC);
 
 router.post('/nfcs', nfcActions.saveNFC);
 
-// delete NFC
-
-router.delete('/nfcs/:id', nfcActions.deleteNFC);
-
 
 module.exports = router;
