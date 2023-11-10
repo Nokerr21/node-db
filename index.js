@@ -13,7 +13,7 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const whiteList = ['https://nokerr21.github.io/nfcontrol-worker/', 'https://nokerr21.github.io/nfcontrol-user/']
+const whiteList = ['https://nokerr21.github.io/nfcontrol-worker/', 'https://nokerr21.github.io/nfcontrol-user/', 'https://node-nfc-db.onrender.com/']
 const corsOptions = {
     origin: function (origin, callback) {
       if (whiteList.indexOf(origin) !== -1) {
