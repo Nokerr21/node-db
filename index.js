@@ -13,7 +13,17 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-app.use(cors());
+const whiteList = ['https://nokerr21.github.io/nfcontrol-worker/', 'https://nokerr21.github.io/nfcontrol-user/']
+const corsOptions = {
+    origin: function (origin, callback) {
+      if (whiteList.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+}
+app.use(cors(corsOptions));
 
 // routes
 app.use('/api', apiRouter);
