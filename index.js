@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const {port} = require('./config');
-const apiRouter = require('./routes/api');
+const {port} = require('./app/config');
+const apiRouter = require('./app/routes/api');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const http = require("http");
 
 // database
-require('./database/dbConnection');
+require('./app/database/dbConnection');
 
 // parsers
 app.use(bodyParser.json());
@@ -20,7 +20,7 @@ const corsOptions = {
     //    return callback(null, true);
     //  }
       if (allowedOrigins.indexOf(origin) === -1) {
-        let error = new Error('The CORS policy for this site does not allow access from the specified Origin: ' + origin)
+        let error = new Error('The CORS policy for this site does not allow access from the specified origin: ' + origin)
         error.statusCode = 403;
         return callback(error, false)
       } else {
