@@ -13,7 +13,7 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const whiteList = ['https://node-nfc-db.onrender.com', 'https://nokerr21.github.io']
+const whiteList = ['https://node-nfc-db.onrender.com/api/nfcs', 'https://nokerr21.github.io']
 const corsOptions = {
     origin: function (origin, callback) {
       if (whiteList.indexOf(origin) !== -1) {
@@ -32,7 +32,3 @@ app.use('/api', apiRouter);
 http.createServer(app).listen(port, function(){
     console.log("Server is listening... PORT: " + port);
 });
-
-//app.listen(port, function(){
- //   console.log("Server is listening... PORT: " + port);
-//});
