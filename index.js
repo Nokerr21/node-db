@@ -20,7 +20,7 @@ const corsOptions = {
     //    return callback(null, true);
     //  }
       if (allowedOrigins.indexOf(origin) === -1) {
-        let error = new Error('The CORS policy for this site does not allow access from the specified Origin.')
+        let error = new Error('The CORS policy for this site does not allow access from the specified Origin: ' + origin)
         error.statusCode = 403;
         return callback(error, false)
       } else {
