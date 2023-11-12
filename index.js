@@ -13,13 +13,18 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const whiteList = ['https://node-nfc-db.onrender.com/api/nfcs', 'https://nokerr21.github.io']
+const allowedOrigins = ['https://node-nfc-db.onrender.com', 'https://nokerr21.github.io']
 const corsOptions = {
     origin: function (origin, callback) {
-      if (whiteList.indexOf(origin) !== -1) {
-        callback(null, true)
+      if (!origin){
+        return callback(null, true);
+      }
+      if (allowedOrigins.indexOf(origin) === -1) {
+        let error = new Error('The CORS policy for this site does not allow access from the specified Origin')
+        error.statusCode = 403;
+        return callback(error, false)
       } else {
-        callback(new Error())
+        return callback(null, true)
       }
     }
 }
