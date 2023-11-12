@@ -3,9 +3,6 @@ const router = express.Router();
 
 const nfcActions = require('../actions/api/nfcActions');
 
-
-// router.get('/', nfcActions.saveNFC);
-
 // get NFC
 
 router.get('/nfcs/:id', nfcActions.getNFC);
