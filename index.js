@@ -13,7 +13,7 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const allowedOrigins = ['https://node-nfc-db.onrender.com', 'https://nokerr21.github.io']
+const allowedOrigins = ['https://nokerr21.github.iot']
 const corsOptions = {
     origin: function (origin, callback) {
       if (!origin){
