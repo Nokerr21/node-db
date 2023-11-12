@@ -13,14 +13,14 @@ require('./database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const allowedOrigins = ['https://nokerr21.github.iot']
+const allowedOrigins = ['https://nokerr21.github.io']
 const corsOptions = {
     origin: function (origin, callback) {
-      if (!origin){
-        return callback(null, true);
-      }
+    //  if (!origin){
+    //    return callback(null, true);
+    //  }
       if (allowedOrigins.indexOf(origin) === -1) {
-        let error = new Error('The CORS policy for this site does not allow access from the specified Origin')
+        let error = new Error('The CORS policy for this site does not allow access from the specified Origin.')
         error.statusCode = 403;
         return callback(error, false)
       } else {
