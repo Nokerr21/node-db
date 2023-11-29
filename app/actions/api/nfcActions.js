@@ -34,7 +34,7 @@ class NfcActions {
         try{
             nfc = await NFC.findOne({ _id: id });
         } catch (error) {
-            return resp.status(404).json({massage: error.message})
+            return resp.status(410).json({massage: error.message})
         }
         
         resp.status(200).json(nfc);
