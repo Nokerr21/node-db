@@ -28,8 +28,16 @@ class NfcActions {
     // read one NFC info GET
     async getNFC(req, resp){
         const id = req.params.id;
-        const nfc = await NFC.findOne({ _id: id });
-        resp.json(nfc);
+
+        let nfc;
+
+        try{
+            nfc = await NFC.findOne({ _id: id });
+        } catch (error) {
+            return resp.status(404).json({massage: error.message})
+        }
+        
+        resp.status(200).json(nfc);
     }
     
 }
