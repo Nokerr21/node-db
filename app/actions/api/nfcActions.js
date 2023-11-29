@@ -39,7 +39,7 @@ class NfcActions {
         
         resp.status(200).json(nfc);
     }
-    
+   
 }
 
 module.exports = new NfcActions();
