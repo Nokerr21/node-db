@@ -5,6 +5,7 @@ class NfcActions {
     // save NFC info POST
     async saveNFC(req, resp){
         const info = req.body.info;
+        const timeStamp = req.body.timeStamp;
         const index = req.body.index;
         const batchNumber = req.body.batchNumber;
 
@@ -13,10 +14,10 @@ class NfcActions {
         try {
             nfc = new NFC({
                 info: info,
+                timeStamp: timeStamp,
                 index: index,
                 batchNumber: batchNumber
             });
-    
             await nfc.save();
         } catch (error) {
             return resp.status(422).json({message: error.message})

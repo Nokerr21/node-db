@@ -5,9 +5,13 @@ const NFCSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  timeStamp: {
+    type: String,
+    required:true,
+  },
   index: {
     type: String,
-    required: true,
+    required: false,
   },
   batchNumber: {
     type: String,
