@@ -13,7 +13,7 @@ require('./app/database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const allowedOrigins = ['https://nokerr21.github.io']
+const allowedOrigins = ['https://noker21.github.io']
 const corsOptions = {
     origin: function (origin, callback) {
       //if (!origin){
