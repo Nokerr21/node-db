@@ -4,6 +4,7 @@ const {port} = require('./app/config');
 const apiRouter = require('./app/routes/api');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const corsOptions = require('./app/security/corsOptions');
 const http = require("http");
 
 // database
@@ -13,21 +14,6 @@ require('./app/database/dbConnection');
 app.use(bodyParser.json());
 
 // cors unblock
-const allowedOrigins = ['https://noker21.github.io']
-const corsOptions = {
-    origin: function (origin, callback) {
-      //if (!origin){
-      //  return callback(null, false);
-      //}
-      if (allowedOrigins.indexOf(origin) === -1) {
-        let error = new Error('The CORS policy for this site does not allow access from the specified origin: ' + origin)
-        error.statusCode = 403;
-        return callback(error, false)
-      } else {
-        return callback(null, true)
-      }
-    }
-}
 app.use(cors(corsOptions));
 
 // routes
