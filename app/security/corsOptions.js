@@ -1,4 +1,4 @@
-const allowedOrigins = ['https://noker21.github.io']
+const allowedOrigins = ['https://nokerr21.github.io']
 
 const corsOptions = {
     origin: function (origin, callback) {
